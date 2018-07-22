@@ -1,0 +1,16 @@
+version: '3'
+
+services:
+  loom: 
+    image: loomnetwork/loom
+    volumes:
+      - ./simple_storage:/loom
+    ports: 
+      - 46657:46657
+      - 9999:9999
+  node:
+    build: .
+    volumes: 
+      - ./simple_storage:/loom
+    depends_on: 
+      - loom
